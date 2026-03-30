@@ -20,8 +20,7 @@ services:
     restart: unless-stopped
     networks:
       - searxng
-    ports:
-      - "8004:8080"
+      - caddy_net
     volumes:
       - ./searxng:/etc/searxng:rw
       - searxng-data:/var/cache/searxng:rw
@@ -35,6 +34,8 @@ services:
 
 networks:
   searxng:
+  caddy_net:
+    external: true
 
 volumes:
   valkey-data2:
